@@ -26,8 +26,8 @@ exports.functionsAnswers = {
     var functionsArr = [];
 
     var closureFn = function (value) {
-      return function () { 
-        return fn(value) 
+      return function () {
+        return fn(value)
       };
     };
 
@@ -40,15 +40,26 @@ exports.functionsAnswers = {
   },
 
   partial: function (fn, str1, str2) {
-
+    //Use bind method to create a partially applied function
+    return fn.bind(null, str1, str2);
   },
 
   useArguments: function () {
+    let total = 0;
+    //Note: the arguments object is NOT an Array. It is similar to an Array, but does not have any Array properties except length.
+    //ES2015: Convert arguments to a real array
+    const args = Array.from(arguments);
 
+    for (let index = 0; index < args.length; index++) {
+      total += args[index];
+    }
+    return total;
   },
 
   callIt: function (fn) {
-
+    const args = Array.from(arguments);
+    var argList = args.slice(1);
+    return fn.apply(null, argList);
   },
 
   partialUsingArguments: function (fn) {
