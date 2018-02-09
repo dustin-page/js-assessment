@@ -117,6 +117,14 @@ exports.arraysAnswers = {
   },
 
   findAllOccurrences: function(arr, target) {
+    let indices = [];
+    let index = arr.indexOf(target);
 
+    while (index !== -1) {
+      indices.push(index);
+      index = arr.indexOf(target, index+1);
+    }
+
+    return indices;
   }
 };
