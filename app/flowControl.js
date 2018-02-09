@@ -16,8 +16,10 @@ exports.flowControlAnswers = {
       return 'fizz';
     } else if (num % 5 === 0) {
       return 'buzz';
+    } else if (isNaN(num)){
+      return false;
     } else {
-      return isNaN(num) ? false : num;
+      return num;
     }
   }
 };
